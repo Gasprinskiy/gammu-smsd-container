@@ -1,0 +1,14 @@
+[gammu]
+port = ${GSM_MODEM_PORT}
+connection = at115200
+
+[smsd]
+service = sql
+driver = native_mysql
+host = ${DB_HOST}
+user = ${DB_USER}
+password = ${DB_PASSWORD}
+database = ${DB_NAME}
+logfile = /app/smsd.log
+debuglevel = 255
+runonreceive = /app/on_receive.sh
