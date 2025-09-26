@@ -1,0 +1,21 @@
+services:
+  smsd:
+    build: .
+    container_name: gammu-smsd-container
+    restart: always
+    privileged: true
+    networks:
+      - sms_services
+    environment:
+      DB_HOST: $DB_HOST
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+      DB_NAME: $DB_NAME
+      GSM_MODEM_PORT: $GSM_MODEM_PORT
+      MESSAGE_HANDLER_ENDPOINT: $MESSAGE_HANDLER_ENDPOINT
+    devices:
+      - "$GSM_MODEM_PORT:$GSM_MODEM_PORT"
+
+networks:
+  sms_services:
+    external: true
